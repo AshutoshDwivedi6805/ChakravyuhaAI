@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: chakravyuha
+      POSTGRES_USER: chakravyuha
+      POSTGRES_PASSWORD: chakravyuha
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chakravyuha -d chakravyuha"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+  backend:
+    build: ./backend
+    env_file: .env
+    depends_on: [postgres, redis]
+    ports: ["8000:8000"]
+    volumes: [uploads:/app/uploads, reports:/app/reports]
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["5173:80"]
+volumes:
+  pgdata:
+  uploads:
+  reports:

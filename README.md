@@ -1,2 +1,8 @@
-# ChakravyuhaAI
-**Chakravyuha AI** is an AI-powered Military Digital Twin &amp; Threat Intelligence Platform that transforms surveillance imagery into actionable battlefield intelligence. It combines computer vision, risk prediction, strategic simulation, digital twin mapping, and AI analytics to provide real-time situational awareness and defensive decision support.
+# pytest cache directory #
+
+This directory contains data from the pytest's cache plugin,
+which provides the `--lf` and `--ff` options, as well as the `cache` fixture.
+
+**Do not** commit this to version control.
+
+See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more information.
